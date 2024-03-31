@@ -1,0 +1,133 @@
+Title: "R lab 2"
+author: "Sailesh Arya"
+output : html_notebook 
+
+
+# variables 
+Task 1 Crete a variable x and y. store the product of both variable int z 
+```{r}
+x = 2+5 ; 
+y = 6;
+z = x*y ; 
+z
+```
+Task 2 Create a new variable but with different method but same result.
+```{r}
+a <- 10 - 7 
+b<- 4 
+c<-a/b 
+c 
+```
+# Functions 
+Task 3 Create a vector(one dimensional array)
+```{r}
+ x = c(100,200,300)
+ x 
+```
+
+# Data Types in R 
+
+Task 4 Create a varable x and check the class and data types of X 
+```{r}
+ x = 5
+ class(x)
+ 
+ 
+```
+```{r}
+ is.integer(x)
+```
+
+# Vector,matrices , Array, List and Data Frames 
+Task 4 Create a matrix "xx" that have 3 row and 2 column and check the class,lenght,dim of the matrix 
+```{r}
+xx = matrix(1:6, nrow =3, ncol = 2)
+xx
+
+class(xx)       # print xx
+is.vector(xx)      # check if it is vector or not 
+length(xx)        # TO CHECK THE LENGTH 
+is.matrix(xx)     # TO CHECK IF it is a matrix or not 
+dim(xx)           # to check the dimension of the matrix 
+
+
+```
+# Data Set to apply family tutorial 
+Task 5: Import a data with the name of mtcars Table  and given 
+import the 6 data type from it 
+```{r}
+data("mtcars")    #to import table Data  
+head(mtcars)    # to see the first 5 value
+
+```
+Task 6 : Applied a transpose in build in data set beaver1 and Show the max value in row wise only.
+```{r}
+apply(t(beaver1),1,max)
+```
+Task 7: Use a apply function to show the mean value of the given data set.
+
+```{r}
+  apply(mtcars,2,mean)
+
+```
+Task 8: Create a anonymous function which gives the remainder of 10
+
+```{r}
+head(apply(mtcars,2,function(x) x%%10))
+```
+# lapply Functions 
+Task 10: Create a variable called movie and applied a applyl function to conver the data into lowe case and print the movie_Lower in strucutre way
+```{r}
+movies <- c("SPYDERMAN","BATMAN","VERTIGO","CHINATOWN")
+movies_lower <-lapply(movies,tolower)
+str(movies_lower)
+```
+Task 11: Remove a list and unlist it using sapply function 
+
+```{r}
+movies_lower <-unlist(lapply(movies, tolower))
+str (movies_lower)
+```
+#sapply()Function
+Task 12 :  
+
+```{r}
+ dt <- cars
+lmn_cars <- lapply(dt, min )
+smn_cars <- sapply(dt, min)
+lmn_cars
+smn_cars
+
+```
+```{r}
+lmxcars <- lapply(dt, max)
+smxcars <- sapply(dt,max)
+lmxcars
+```
+
+# SAVING AND LOADING DATA 
+Task 13 : Create a two variable named with EUCountryNames and EUPopulaltion, and set it as a new data and print it 
+
+```{r}
+EUCountyNames = c("United Kingdom", "Germany","france","Italy")
+EUPopulations = c(34663466346,363463636,34363664663,6634634634)
+EU = data.frame(EUCountyNames,EUPopulations)
+EU
+```
+
+```{r}
+ save(EU,file = "EUinfo.RData")
+getwd()
+```
+```{r}
+rm(EU)
+load("EUinfo.RData")
+write.csv(EU,"EUInfo.csv")
+
+
+```
+
+```{r}
+EU2 = read.csv("EUinfo.v2")
+```
+
